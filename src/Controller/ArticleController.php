@@ -75,14 +75,12 @@ final class articleController
 
         $id_article = preg_replace('/[^A-Za-z0-9\-]/', '', $id_article);
         $id_article = (int) $id_article;
-        var_dump($id_article);
         echo ("bla");
         $entityManager = Em::getEntityManager();
         $repos = new EntityRepository($entityManager, new ClassMetadata("App\Entity\Article"));
 
         try {
             $article_to_delete = $repos->find($id_article);
-            var_dump($article_to_delete);
             $entityManager->remove($article_to_delete);
             $entityManager->flush();
         } catch (\Throwable $th) {
