@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * @ORM\Entity   
  */
-class editeur
+class Editeur
 {
     /**
      * @ORM\Id
@@ -21,6 +21,11 @@ class editeur
      * @ORM\Column(length="100")
      */
     private string $nom_editeur;
+
+    public function __construct($nom)
+    {
+        $this->nom_editeur = $nom;
+    }
 
     /**
      * Get the value of id_editeur

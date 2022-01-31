@@ -29,18 +29,18 @@ class Article
     private string $resume;
 
     /**
-     * @ORM\ManyToOne(targetEntity="auteur")
+     * @ORM\ManyToOne(targetEntity="Auteur")
      * @ORM\JoinColumn(name="auteur_id", referencedColumnName="auteur_id",onDelete="SET NULL")
      */
-    public auteur $auteur_id;
+    public Auteur $auteur_id;
 
     /**
-     * @ORM\ManyToOne(targetEntity="editeur")
+     * @ORM\ManyToOne(targetEntity="Editeur")
      * @ORM\JoinColumn(name="id_editeur", referencedColumnName="id_editeur",onDelete="SET NULL")
      */
-    public editeur $id_editeur;
+    public Editeur $id_editeur;
 
-    public function __construct($isbn, $titre, $resume, auteur $auteur_id, editeur $id_editeur)
+    public function __construct($isbn, $titre, $resume, Auteur $auteur_id, Editeur $id_editeur)
     {
         $this->isbn = $isbn;
         $this->titre = $titre;
@@ -129,41 +129,41 @@ class Article
     }
 
     /**
-     * Get the value of auteur
+     * Get the value of Auteur
      */
     public function getAuteur()
     {
-        return $this->auteur;
+        return $this->Auteur;
     }
 
     /**
-     * Set the value of auteur
+     * Set the value of Auteur
      *
      * @return  self
      */
-    public function setAuteur($auteur)
+    public function setAuteur($Auteur)
     {
-        $this->auteur = $auteur;
+        $this->Auteur = $Auteur;
 
         return $this;
     }
 
     /**
-     * Get the value of editeur
+     * Get the value of Editeur
      */
     public function getEditeur()
     {
-        return $this->editeur;
+        return $this->Editeur;
     }
 
     /**
-     * Set the value of editeur
+     * Set the value of Editeur
      *
      * @return  self
      */
-    public function setEditeur($editeur)
+    public function setEditeur($Editeur)
     {
-        $this->editeur = $editeur;
+        $this->Editeur = $Editeur;
 
         return $this;
     }
