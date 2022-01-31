@@ -9,7 +9,6 @@ use Doctrine\ORM\EntityRepository;
 use App\Helpers\EntityManagerHelper as Em;
 use Doctrine\ORM\Mapping\ClassMetadata;
 
-use Faker\Factory;
 
 final class AuteurController
 {
@@ -48,18 +47,4 @@ final class AuteurController
         $entityManager->flush();
     }
 
-    public function add_random_auteur() {
-        for ($i=0; $i < 6; $i++) { 
-            $faker = Factory::create();
-            $entityManager = Em::getEntityManager();
-            $repo = new EntityRepository($entityManager, new ClassMetadata("App\Entity\Auteur"));
-    
-            $Auteur = new Auteur($faker->lastname);
-    
-            $entityManager = Em::getEntityManager();
-            $entityManager->persist($Auteur);
-            $entityManager->flush();
-        }
-
-    }
 }
