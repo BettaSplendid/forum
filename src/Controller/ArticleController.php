@@ -42,12 +42,11 @@ final class articleController
         $repo_editeur = new EntityRepository($entityManager, new ClassMetadata("App\Entity\Editeur"));
 
         try {
+            $author_id = htmlentities(strip_tags($_POST['auteur_id']));
             $author_id = $_POST['auteur_id'];
-
             $author = $repo_auteur->find($author_id);
         } catch (\Throwable $th) {
-            throw new Exception("Error Processing Request", 1);
-            header("./index.php");
+            echo $th->getMessage();
             die();
         }
 
@@ -57,11 +56,11 @@ final class articleController
 
 
         try {
+            $id_editeur = htmlentities(strip_tags($_POST['id_editeur']));
             $id_editeur = $_POST['id_editeur'];
             $editor = $repo_editeur->find($id_editeur);
         } catch (\Throwable $th) {
-            throw new Exception("Error Processing Request", 1);
-            header("./index.php");
+            echo $th->getMessage();
             die();
         }
 
@@ -69,5 +68,26 @@ final class articleController
         $articlebb = new Article($_POST['isbn'], $_POST['titre'], $_POST['resume'], $author, $editor);
         $entityManager->persist($articlebb);
         $entityManager->flush();
+    }
+
+    public function delete_article($id_article)
+    {
+
+        $id_article = preg_replace('/[^A-Za-z0-9\-]/', '', $id_article);
+        $id_article = (int) $id_article;
+        var_dump($id_article);
+        echo ("bla");
+        $entityManager = Em::getEntityManager();
+        $repos = new EntityRepository($entityManager, new ClassMetadata("App\Entity\Article"));
+
+        try {
+            $article_to_delete = $repos->find($id_article);
+            var_dump($article_to_delete);
+            $entityManager->remove($article_to_delete);
+            $entityManager->flush();
+        } catch (\Throwable $th) {
+            echo $th->getMessage();
+            die();
+        }
     }
 }

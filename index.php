@@ -25,10 +25,10 @@ $router->get("/Editeur-add", "App\Controller\EditeurController@show_add_Editeur"
 $router->post("/Editeur-add", "App\Controller\EditeurController@add_Editeur");
 
 //article
-$router->get("/article", "App\Controller\ArticleController@index");
+$router->get("/article", "App\Controller\ArticleController@add_random_article");
 $router->get("/article-all", "App\Controller\ArticleController@show_all_article");
 $router->get("/article-add", "App\Controller\ArticleController@show_add_article");
 $router->post("/article-add", "App\Controller\ArticleController@add_article");
-
+$router->get("/article-delete:number", "App\Controller\ArticleController@delete_article");
 
 $router->run();
