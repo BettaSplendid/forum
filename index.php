@@ -29,6 +29,7 @@ $router->get("/article", "App\Controller\ArticleController@index");
 $router->get("/article-all", "App\Controller\ArticleController@show_all_article");
 $router->get("/article-add", "App\Controller\ArticleController@show_add_article");
 $router->post("/article-add", "App\Controller\ArticleController@add_article");
+$router->get("/article-modify:number", "App\Controller\ArticleController@modify_article");
 $router->get("/article-delete:number", "App\Controller\ArticleController@delete_article");
 
 $router->run();

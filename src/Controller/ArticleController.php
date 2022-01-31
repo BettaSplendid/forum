@@ -70,6 +70,13 @@ final class articleController
         $entityManager->flush();
     }
 
+    public function modify_article()
+    {
+        echo("to be done!");
+        // Il faut attraper l'article, extraire les données et les mettre dans une interface ou on peux faire les modifications, 
+        //et ensuite on peux juste faire un flush classique.s
+    }
+
     public function delete_article($id_article)
     {
 
