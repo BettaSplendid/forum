@@ -50,7 +50,6 @@ final class articleController
             die();
         }
 
-
         echo ("after first try");
         var_dump($author_id);
 
